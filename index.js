@@ -1,3 +1,7 @@
+
+
+(function() {
+
 const personForm = document.querySelector('form')
 
 const renderColor = (hairColor) => {
@@ -50,6 +54,10 @@ const handleSubmit = (ev) => {
 }
 
 personForm.addEventListener('submit', handleSubmit)
+
+}) () //IIFE
+
+
 
 //object
 /*const person = {
