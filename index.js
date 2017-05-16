@@ -1,6 +1,6 @@
 
 
-(function() {
+{
 
 const personForm = document.querySelector('form')
 
@@ -55,7 +55,7 @@ const handleSubmit = (ev) => {
 
 personForm.addEventListener('submit', handleSubmit)
 
-}) () //IIFE
+}
 
 
 
