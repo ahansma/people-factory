@@ -8,12 +8,61 @@ const renderColor = (hairColor) => {
   return colorDiv
 }
 
+const renderItem = (name, value) => {
+  const item = document.createElement('li')
+  item.innerHTML = `${name}: ${value}`
+  return item
+}
+
+const renderList = (person) => {
+  const list = document.createElement('ul')
+  Object.keys(person).map((key, _i, _keys) => {
+    const li = renderItem(key, person[key])
+    list.appendChild(li)
+  })
+  return list
+}
+
 const handleSubmit = (ev) => {
   ev.preventDefault()
   const form = ev.target
   const details = document.querySelector('.details')
 
-  const personName = document.createElement('li')
+  const person = {
+    personName: form.personName.value,
+    hairColor: renderColor(form.hairColor.value).outerHTML,
+    age: form.age.value,
+    birthplace: form.birthplace.value,
+  }
+
+  const list = renderList(person)
+  details.appendChild(list)
+}
+
+personForm.addEventListener('submit', handleSubmit)
+
+//object
+/*const person = {
+    name: 'Seth',
+    hairColor: 'blonde',
+    handsomenessLevel: 'devilish',
+}
+//access stuff from object
+person.hairColor*/
+
+
+//we would do this instead of using append child in the handleSubmit function
+  /*details.innerHTML = `
+    <ul>
+      <li>Name: ${personName}</li>
+      <li>Hair Color: ${colorDiv.outerHTML}</li>
+      <li>Age: ${age}</li>
+      <li>Birthplace: ${birthplace}</li>
+    </ul>
+  `*/
+
+//Homework 1:
+  /*const personName = document.createElement('li')
   personName.textContent =  "Name: " + form.personName.value
 
   const hairColor = form.hairColor.value
@@ -27,24 +76,9 @@ const handleSubmit = (ev) => {
   birthplace.textContent = "Birthplace: " + form.birthplace.value
 
   const colorDiv = renderColor(hairColor)
-
+  
   color.appendChild(colorDiv)
   details.appendChild(personName)
   details.appendChild(color)
   details.appendChild(age)
-  details.appendChild(birthplace)
-
-  /*details.innerHTML = `
-    <ul>
-      <li>Name: ${personName}</li>
-      <li>Hair Color: ${colorDiv.outerHTML}</li>
-      <li>Age: ${age}</li>
-      <li>Birthplace: ${birthplace}</li>
-    </ul>
-  `*/
-
-
-}
-
-personForm.addEventListener('submit', handleSubmit)
-
+  details.appendChild(birthplace)*/
