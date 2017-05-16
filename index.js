@@ -13,21 +13,38 @@ const handleSubmit = (ev) => {
   const form = ev.target
   const details = document.querySelector('.details')
 
-  const personName = form.personName.value
+  const personName = document.createElement('li')
+  personName.textContent =  "Name: " + form.personName.value
+
   const hairColor = form.hairColor.value
-  const age = form.age.value
-  const birthplace = form.birthplace.value
+  const color = document.createElement('li')
+  color.textContent = "Hair Color: "
+
+  const age = document.createElement('li')
+  age.textContent = "Age: " + form.age.value
+
+  const birthplace = document.createElement('li')
+  birthplace.textContent = "Birthplace: " + form.birthplace.value
 
   const colorDiv = renderColor(hairColor)
 
-  details.innerHTML = `
+  color.appendChild(colorDiv)
+  details.appendChild(personName)
+  details.appendChild(color)
+  details.appendChild(age)
+  details.appendChild(birthplace)
+
+  /*details.innerHTML = `
     <ul>
       <li>Name: ${personName}</li>
       <li>Hair Color: ${colorDiv.outerHTML}</li>
       <li>Age: ${age}</li>
       <li>Birthplace: ${birthplace}</li>
     </ul>
-  `
+  `*/
+
+
 }
 
 personForm.addEventListener('submit', handleSubmit)
+
